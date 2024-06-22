@@ -8,20 +8,17 @@
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        if len(s) % 2 == 1:
-            return False
-        pairs = {
-            ")": "(",
-            "]": "[",
-            "}": "{",
-        }
-        stack = list()
-        for ch in s:
-            if ch in pairs:
-                if not stack or stack[-1] != pairs[ch]:
-                    return False
-                stack.pop()
+        stack=[]
+        for i in s:
+            if i == '(':
+                stack.append(')')
+            elif i == '[':
+                stack.append(']')
+            elif i == '{':
+                stack.append('}')
+            elif not stack or stack[-1]!=i:
+                return False
             else:
-                stack.append(ch)
-        return not stack
+                stack.pop()
+        return True if not stack else False
 # @lc code=end

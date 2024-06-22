@@ -7,9 +7,13 @@
 # @lc code=start
 class Solution(object):
     def twoSum(self, nums, target) :
+        dict={}
         for i in range(len(nums)):
-            for j in range(i+1,len(nums)):
-                if nums[i]+nums[j]==target:
-                    return i,j
+            tar=target-nums[i]
+            if tar in dict:
+                if dict[tar]==i:
+                    continue
+                return [i,dict[tar]]
+            dict[nums[i]]=i
 # @lc code=end
 
